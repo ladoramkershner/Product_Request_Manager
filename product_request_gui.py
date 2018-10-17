@@ -9,7 +9,7 @@ class Product_Request(tk.Tk): #make Product Request a child of tk.Tk
         small_font = ("Times New Roman",12)
         header_font = ("Times New Roman",16)
         self.title("Product Request")
-        self.geometry("415x550")
+        self.geometry("450x550")
 
         #-----------------------------
         ##REQUIRED INPUTS##
@@ -32,6 +32,18 @@ class Product_Request(tk.Tk): #make Product Request a child of tk.Tk
         tk.Label(self, text="Target Name", font=small_font).grid(column=0, row=rw, sticky="E")
         self.target_entry = tk.Entry(width=wl)
         self.target_entry.grid(column=1, row=rw, columnspan=3, sticky="W")
+        rw+=1
+
+        #Description
+        tk.Label(self, text="Product Description", font=small_font).grid(column=0, row=rw, sticky="e")
+        self.product_description = tk.Entry(width=wl)
+        self.product_description.grid(column=1, row=rw, columnspan=3, sticky="w")
+        rw+=1
+
+        #Due Date
+        tk.Label(self, text="Deadline", font=small_font).grid(column=0, row=rw, sticky="e")
+        self.deadline = tk.Entry()
+        self.deadline.grid(column=1, row=rw, columnspan=3, sticky="w")
         rw+=1
 
         #Latitude
@@ -139,6 +151,7 @@ class Product_Request(tk.Tk): #make Product Request a child of tk.Tk
 
     def submit(self):
         required_outputs = {'Requestor Name': self.name_entry.get(), 'Project Name': self.project_entry.get(), 'Target Name': self.target_entry.get(),
+        'Product Description': self.product_description.get(), 'Deadline': self.deadline.get(),
         'Minimum Latitude': self.lat_min_entry.get(), 'Maximum Latitude': self.lat_max_entry.get(), 'Minimum Longitude': self.lon_min_entry.get(),
         'Maximum Longitude': self.lon_max_entry.get(), 'Stereo Boolean': self.stereo.get()}
 
